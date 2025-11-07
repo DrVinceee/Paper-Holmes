@@ -6,6 +6,7 @@ Cardio Literature Collector 利用 GitHub Actions 每日自动检索心血管相
 ## 快速开始
 1. **Fork 或克隆本仓库。**
 2. **确保默认分支已启用 GitHub Actions。**首次触发时，GitHub 会请求授权，请按提示开启。
+3. **授予 `GITHUB_TOKEN` 写入权限。**进入仓库 **Settings → Actions → General**，将 *Workflow permissions* 设置为 **Read and write permissions**，否则定时任务无法推送更新数据。
 
 ## 修改检索关键词
 - 默认关键词为 `aortic stenosis, mitral regurgitation, valvular heart disease, deep learning`。
@@ -27,6 +28,9 @@ Cardio Literature Collector 利用 GitHub Actions 每日自动检索心血管相
   - `literature_results_YYYYMMDD_HHMMSS.csv`：带时间戳的完整备份。
   - `literature_summary_YYYYMMDD_HHMMSS.md`：对应 CSV 的 Markdown 表格摘要，可直接用于分享或汇报。
 - GitHub Actions 会在成功更新后自动提交并推送这些文件。
+
+## 常见问题
+- **Actions 无法推送提交（403 错误）**：请确认已按照“快速开始”第 3 步授予 `GITHUB_TOKEN` 写入权限，并保留工作流中的 `permissions: contents: write` 配置。若在组织仓库中运行，还需确保组织层级未限制工作流写入。
 
 ## 可选进阶设置
 - **API Key**：
